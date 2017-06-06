@@ -1,11 +1,3 @@
-#
-# This is the user-interface definition of a Shiny web application. You can
-# run the application by clicking 'Run App' above.
-#
-# Find out more about building applications with Shiny here:
-# 
-#    http://shiny.rstudio.com/
-#
 
 library(shiny)
 
@@ -15,7 +7,7 @@ shinyUI(fluidPage(
   # Application title
   titlePanel("Predict a child's height using Galton Families"),
   
-  # Sidebar with a slider input for number of bins 
+  # Sidebar with a slider input for unit, mother height, father height, gender
   sidebarLayout(
     sidebarPanel(
         radioButtons("measure", "Unit:", c("inches", "cm")),
@@ -30,14 +22,18 @@ shinyUI(fluidPage(
                    max = 110,
                    value = 65),
        selectInput("gender","gender:",c("Male"="male", "Female"="female")),
+       
+       #Predicted height of child.
        textInput("predictedHeight","Predicted Height:")
        
     ),
     
-    # Show a plot of the generated distribution
+    
     mainPanel(
-   
+            # Show the scatterplot
             plotOutput("HeightPlot"),
+            
+            # Show documentation
             tags$div(
                 HTML("<h2>Overview</h2>"),
                 HTML("This shiny app is a simple tool to predict a child's height based on parents height and
@@ -59,7 +55,6 @@ shinyUI(fluidPage(
                      On the line there is a black dot which represents the predicted height of the child. The exact predicted
                      value can be seen at the bottom of the left sidebar.")
                 
-  #rsconnect::deployApp('path/to/your/app')
                   
             )
             

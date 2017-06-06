@@ -9,7 +9,7 @@
 
 library(shiny)
 library(HistData)
-# Define server logic required to draw a histogram
+# Define server logic required to draw a scatterplot
 shinyServer(function(input, output, session) {
         
         
